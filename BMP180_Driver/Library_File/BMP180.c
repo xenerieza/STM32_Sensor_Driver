@@ -47,20 +47,26 @@ struct BMP180_Parameters
 }BMP180_Parameters;
 
 
-uint8_t BMP180_Initialize(BMP180_OverSampling_Structures OSS)
+uint8_t BMP180_Initialize()
 {
 	//Check Device Control.
 	if(HAL_I2C_IsDeviceReady(&hi2c1, BMP180_DEVICE_WRITE_ADDRESS, 1, 10000) != HAL_OK)
 	{
 		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
 	}
+
+	BMP180_Get_Calibration_Values();
+
+	return 1;
+}
+
+uint8_t BMP180_Read_All(BMP180_OverSampling_Structures OSS)
+{
 	BMP180_Get_Uncompansated_Temperature_Values();
 	BMP180_Get_Uncompansated_Pressure_Values(OSS);
-	BMP180_Get_Calibration_Values();
-	BMP180_Set_Users_Settings(OSS);
 	BMP180_Calculate_True_Temperature();
 	BMP180_Calculate_True_Pressure(OSS);
-	return 1;
+	BMP180_Set_Users_Settings(OSS);
 }
 
 short BMP180_Set_Users_Settings(BMP180_OverSampling_Structures OSS)
