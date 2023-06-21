@@ -89,11 +89,11 @@ typedef struct BMP180_Pressure_Parameters_Structure
 /**
   * @brief Oversampling Setting Tables
   * @note Table Parameters:
-  * Mode					|	Parameter	|	Conversion Time Pressure max.(ms)	|
-  * Ultra_Low_Power			|		0		|					4.5					|
-  * Standart				|		1		|					7.5					|
-  * High_Resolution			|		2		|					13.5				|
-  * Ultra_High_Resolution   |		3		|					25.5				|
+  * Mode				|	Parameter		|	Conversion Time Pressure max.(ms)		|
+  * Ultra_Low_Power			|		0		|			4.5				|
+  * Standart				|		1		|			7.5				|
+  * High_Resolution			|		2		|			13.5				|
+  * Ultra_High_Resolution  	        |		3		|			25.5				|
   */
 
 typedef enum BMP180_OverSampling_Structures
@@ -107,6 +107,7 @@ typedef enum BMP180_OverSampling_Structures
 
 /*	Main Functions	*/
 uint8_t BMP180_Initialize(BMP180_OverSampling_Structures OSS);
+uint8_t BMP180_Read_All(BMP180_OverSampling_Structures OSS);
 short BMP180_Set_Users_Settings(BMP180_OverSampling_Structures OSS);
 void BMP180_Get_Calibration_Values(void);
 short BMP180_Get_Uncompansated_Temperature_Values(void);
