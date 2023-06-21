@@ -96,6 +96,7 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   BMP180_Set_Pressure_In_Sea_Level(1013.25);
+  BMP180_Initialize();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,8 +106,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	  BMP180_Initialize(Ultra_Low_Power);
+	  BMP180_Read_All(Ultra_Low_Power);
 	  Altitude = BMP180_C_Get_Altitude(Ultra_Low_Power);
 	  Pa = BMP180_Get_Pressure_In_Pa();
 	  hPa = BMP180_Get_Pressure_In_hPa();
