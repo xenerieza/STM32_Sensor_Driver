@@ -57,7 +57,7 @@ uint8_t BMP180_Initialize()
 
 	BMP180_Get_Calibration_Values();
 
-	return 1;
+	return 0;
 }
 
 uint8_t BMP180_Read_All(BMP180_OverSampling_Structures OSS)
